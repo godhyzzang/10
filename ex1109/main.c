@@ -1,17 +1,14 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>     // for _countof
+
 int main(void) {
-	int i = 0;
-	char str[4];
-	str[0] = 'a';
-	str[1] = 'b';
-	str[2] = 'c';
-	str[3] = '\0';
-	printf("%s\n", str);
+	
+	char src[] = "The worst things to eat before you sleep";
+	char dst[100];
 
 
-	while (str[i] != '\0') {
+		strcpy_s(dst, _countof(dst),src); //strcpy_s instead of strcpy
 
-		printf("%c", str[i]);
-		i++;
-	}
+		printf("copied string :%s", dst);
 }
