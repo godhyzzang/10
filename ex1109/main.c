@@ -1,31 +1,17 @@
-//5번 실습
-
+//6번 실습
 #include <stdio.h>
-#include <string.h>
-//#include <stdlib.h>     // for _countof
 
-int main(void) {
+int  main(void) {
+	FILE* fp = NULL;
+	char c;
+	fp = fopen_s(&fp, "sample.txt", "r");
+	//FILE** 과 FILE*은 다름
 
-	FILE* fp;
-	char str[100];
-	//1. open file
-	fp = fopen_s(fp, "sample.txt", "w");
-	//2. write file
+	if (fp == NULL)
+		printf("파일을 못열음\n");
+	while ((c = fgetc(fp)) != EOF) //한글자 읽은게 마지막이 아니면
+		putchar(c); //한글자 출력 
 
-	for (int i = 0; i < 3; i++) {
-
-		printf("input a world");
-		scanf_s("%c", str);//문자배열의 이름은 그 자체가 포인터.
-
-		//파일 내용 쓰기 
-		fprintf(fp, "%s\n", str);
-	}
-
-
-
-
-
-	//3. close file
 	fclose(fp);
-
+	return 0;
 }
